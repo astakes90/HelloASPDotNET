@@ -24,15 +24,11 @@ namespace HelloASPDotNET.Controllers
             return Content(html, "text/html");
         }
 
-        // GET : /hello/welcome
-        //[HttpGet]
-        //[Route("/helloworld/welcome/{name?}")]
-
         [HttpGet("welcome/{name?}")]
         [HttpPost]
-        public IActionResult Welcome(string name = "World")
+        public IActionResult Welcome(string name = "World", string language = "english")
         {
-            return Content("<h1>Welcome to my app, " + name + "!<h1>", "text/html");
+            return Content(CreateMessage(name, language));
         }
 
         public static string CreateMessage(string name, string language)
@@ -47,13 +43,13 @@ namespace HelloASPDotNET.Controllers
                     helloTranslation = "Bonjour ";
                     break;
                 case "german":
-                    helloTranslation = "Hallo";
+                    helloTranslation = "Hallo ";
                     break;
                 case "spanish":
-                    helloTranslation = "Hola";
+                    helloTranslation = "Hola ";
                     break;
                 case "polish":
-                    helloTranslation = "Witam";
+                    helloTranslation = "Witam ";
                     break;
             }
             return helloTranslation + name;
